@@ -1,0 +1,74 @@
+<ng-template #content let-modal class="main" id="one">
+  
+  <div class="modal-header">
+    
+    <div>
+      <h4 class="modal-title" id="modal-basic-title">
+        <strong> {{ views[0].userId }} </strong>
+      </h4>
+      <b class="modal-title">{{ views[0].designations }}</b>
+    </div>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- <h5 class="enroll">Courses Enrolled</h5> -->
+  <div *ngIf="views[0].courseId == 0" class=" d-flex justify-content-center">
+    <h5><strong class="empty"> No Courses Available</strong></h5>
+  </div>
+  
+  <div class="modal-body" class="courselist">
+    <div class="scrollStyle">
+    <!-- <ng-container *ngFor="let course of views">
+      
+      <div class="card shadow-lg">
+        <div class="form-group">
+          <label for="course"><b class="name">{{ course.courseName }}</b></label>
+        </div>
+        <div class="form d-flex flex-row justify-content-between">
+          <label for="startDate" class="start" *ngIf="course.courseId != 0"><b>Started:</b> {{ course.startDate
+            }}</label>
+          &nbsp;
+          <label for="endDate" class="end" *ngIf="course.courseStatus == 'InComplete'"><b>Expected End date :</b> {{
+            course.endDate }}</label>
+          <label for="endDate" class="end" *ngIf="course.courseStatus == 'Completed'"><b>End date :</b> {{
+            course.endDate }}</label>
+          <div>
+            <p *ngIf="course.courseStatus == 'Completed'" class="success pl-3">
+              <strong>Completed</strong>
+            </p>
+            <p *ngIf="course.courseStatus == 'InComplete'" class="text">
+              <strong> InProgress</strong>
+            </p>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div  *ngIf="views"> -->
+       <table class="table" *ngFor="let course of views">
+  <thead>
+    <tr>
+      <!-- <th scope="col">#</th> -->
+      <th scope="col">Course Name</th>
+      <th scope="col">Start Date</th>
+      <th scope="col" *ngIf="course.courseStatus == 'InComplete'">End Date</th>
+      <!-- <th scope="col"*ngIf="course.courseStatus == 'Completed'">Completed Date</th> -->
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <!-- <th scope="row">1</th> -->
+      <td>{{ course.courseName }}</td>
+      <td>{{course.startDate}}</td>
+      <td>{{course.endDate}}</td>
+      <!-- <td>{{course.endDate}}</td> -->
+      <td>{{course.courseStatus}}</td>
+    </tr>
+  </tbody>
+</table>
+<!-- </div> -->
+    <!-- </ng-container> -->
+    </div>
+  </div>
+  
+</ng-template>
